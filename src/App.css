@@ -1,9 +1,9 @@
 .App {
     width: 96%;
-    padding: 1rem 0.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 img {
     width: 1.2rem;
@@ -18,12 +18,17 @@ img:hover {
     cursor: pointer;
     opacity: 0.6;
 }
-header {
+.tools {
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
     align-items: center;
-    width: 100%;
+}
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     background-color: rgb(239, 239, 239);
     padding: 0.5rem;
 }
@@ -44,4 +49,8 @@ aside {
 #map {
     width: 100%;
     height: 85vh;
+}
+.active {
+    background-color: rgb(196, 195, 195);
+    border-radius: 5px;
 }

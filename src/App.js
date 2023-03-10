@@ -5,35 +5,43 @@ import { EditControl } from "react-leaflet-draw"
 import '../node_modules/leaflet/dist/leaflet.css'
 import '../node_modules/leaflet-draw/dist/leaflet.draw.css'
 import './App.css';
+const {log} = console
 
 function App() {
   const headerIcon = [{
     id: 0,
     url: '/icons/add.svg',
+    isActive: false
   },
   {
     id: 1,
     url: '/icons/brush.svg',
+    isActive: false
   },
   {
     id: 2,
     url: '/icons/cut.svg',
+    isActive: false
   },
   {
     id: 3,
     url: '/icons/info.svg',
+    isActive: false
   },
   {
     id: 4,
     url: '/icons/left.svg',
+    isActive: false
   },
   {
     id: 5,
     url: '/icons/tool.svg',
+    isActive: false
   },
   {
     id: 6,
     url: '/icons/undo.svg',
+    isActive: false
   }
 ]
 // React.useEffect(() => {
@@ -48,10 +56,13 @@ function App() {
 //   map.addControl(drawControl);
 // })
 const colorInput = React.useRef()
+const [activeItem, setActiveItem] = React.useState(-1)
   return (
     <div className="App">
       <header>
-        {headerIcon.map(icon => <img key={icon.id} src={icon.url} alt={'icon'} />)}  
+        <div className="tools">
+
+        {headerIcon.map(icon => <img onClick={() => {setActiveItem(icon.id)}} key={icon.id} src={icon.url} alt={'icon'} className={activeItem === icon.id ? 'active' : ''} />)}  
         <select className="font-select" disabled >
           <option>Calibri</option>
           <option>Arial</option>
@@ -74,6 +85,8 @@ const colorInput = React.useRef()
           <option >72</option>
         </select>
         <input type={'color'} ref={colorInput} />
+        </div>
+        {/* <img src="/icons/save.svg" alt="save" /> */}
       </header>  
       <main>
       <MapContainer id="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
