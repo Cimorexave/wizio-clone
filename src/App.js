@@ -1,6 +1,5 @@
 import * as React from "react"
 import { Dialog } from '@headlessui/react'
-import { MyDialog } from "./components/Dialog";
 import './App.css';
 const {log} = console
 
