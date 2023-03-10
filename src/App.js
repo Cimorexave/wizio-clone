@@ -1,4 +1,6 @@
 import * as React from "react"
+import { Dialog } from '@headlessui/react'
+import { MyDialog } from "./components/Dialog";
 import './App.css';
 const {log} = console
 
@@ -52,6 +54,12 @@ function App() {
 // })
 const colorInput = React.useRef()
 const [activeItem, setActiveItem] = React.useState(-1)
+const [isNewShapeDialogOpen, setIsNewShapeDialogOpen] = React.useState({
+  data: false,
+  relation: false,
+  function: false,
+})
+let [isOpen, setIsOpen] = React.useState('')
   return (
     <div className="App">
       <header>
@@ -87,9 +95,63 @@ const [activeItem, setActiveItem] = React.useState(-1)
       <canvas></canvas>
       <aside>
         <div className="aside-header">
-          <button><img src="/icons/add.svg" alt="new" />New Data</button>
-          <button><img src="/icons/add.svg" alt="new" />New Function</button>
-          <button><img src="/icons/add.svg" alt="new" />New Relation</button>
+          <button className="border-black border hover:opacity-60 px-2 cursor-pointer whitespace-nowrap flex flex-row gap-0 items-center rounded-full py-1" onClick={() => setIsOpen('data')}><img src="/icons/add.svg" alt="new" />New Data</button>
+          <button className="border-black border hover:opacity-60 px-2 cursor-pointer whitespace-nowrap flex flex-row gap-0 items-center rounded-full py-1" onClick={() => setIsOpen('function')}><img src="/icons/add.svg" alt="new" />New Function</button>
+          <button className="border-black border hover:opacity-60 px-2 cursor-pointer whitespace-nowrap flex flex-row gap-0 items-center rounded-full py-1" onClick={() => setIsOpen('relation')}><img src="/icons/add.svg" alt="new" />New Relation</button>
+          <Dialog
+            open={isOpen === 'data'}
+            onClose={() => setIsOpen('')}
+            className="relative z-50"
+          >
+            {/* The backdrop, rendered as a fixed sibling to the panel container */}
+            <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+
+            {/* Full-screen container to center the panel */}
+            <div className="fixed inset-0 flex items-center justify-center p-4">
+              {/* The actual dialog panel  */}
+              <Dialog.Panel className="mx-auto max-w-sm rounded bg-white">
+                <Dialog.Title>data properties</Dialog.Title>
+
+                {/* ... */}
+              </Dialog.Panel>
+            </div>
+          </Dialog>
+          <Dialog
+            open={isOpen === 'function'}
+            onClose={() => setIsOpen('')}
+            className="relative z-50"
+          >
+            {/* The backdrop, rendered as a fixed sibling to the panel container */}
+            <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+
+            {/* Full-screen container to center the panel */}
+            <div className="fixed inset-0 flex items-center justify-center p-4">
+              {/* The actual dialog panel  */}
+              <Dialog.Panel className="mx-auto max-w-sm rounded bg-white">
+                <Dialog.Title>function properties</Dialog.Title>
+
+                {/* ... */}
+              </Dialog.Panel>
+            </div>
+          </Dialog>
+          <Dialog
+            open={isOpen === 'relation'}
+            onClose={() => setIsOpen('')}
+            className="relative z-50"
+          >
+            {/* The backdrop, rendered as a fixed sibling to the panel container */}
+            <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+
+            {/* Full-screen container to center the panel */}
+            <div className="fixed inset-0 flex items-center justify-center p-4">
+              {/* The actual dialog panel  */}
+              <Dialog.Panel className="mx-auto max-w-sm rounded bg-white">
+                <Dialog.Title>relation properties</Dialog.Title>
+
+                {/* ... */}
+              </Dialog.Panel>
+            </div>
+          </Dialog>
         </div>
       </aside>
       </main>
