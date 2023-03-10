@@ -89,41 +89,14 @@ const [activeItem, setActiveItem] = React.useState(-1)
         {/* <img src="/icons/save.svg" alt="save" /> */}
       </header>  
       <main>
-      <MapContainer id="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-      <TileLayer
-        url="https://wallpaperaccess.com/full/6302899.jpg"
-      />
-      <FeatureGroup>
-        <EditControl
-          position='topright'
-          draw= {{
-            polyline: {
-                shapeOptions: {
-                    color: '#f357a1',
-                    weight: 10
-                }
-            },
-            polygon: {
-                allowIntersection: false, // Restricts shapes to simple polygons
-                drawError: {
-                    color: '#e1e100', // Color the shape will turn when intersects
-                    message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
-                },
-                shapeOptions: {
-                    color: '#bada55'
-                }
-            },
-            marker: false, // Turns off this drawing tool
-            circlemarker: false, // Turns off this drawing tool
-            rectangle: {
-                shapeOptions: {
-                    clickable: false
-                }
-            }
-        }}
-        />
-      </FeatureGroup>
-      </MapContainer>
+      <canvas></canvas>
+      <aside>
+        <div className="aside-header">
+          <button><img src="/icons/add.svg" alt="new" />New Data</button>
+          <button><img src="/icons/add.svg" alt="new" />New Function</button>
+          <button><img src="/icons/add.svg" alt="new" />New Relation</button>
+        </div>
+      </aside>
       </main>
 
     </div>
