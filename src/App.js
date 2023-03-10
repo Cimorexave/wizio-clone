@@ -1,9 +1,4 @@
 import * as React from "react"
-import L from 'leaflet'
-import { MapContainer, FeatureGroup, TileLayer } from 'react-leaflet';
-import { EditControl } from "react-leaflet-draw"
-import '../node_modules/leaflet/dist/leaflet.css'
-import '../node_modules/leaflet-draw/dist/leaflet.draw.css'
 import './App.css';
 const {log} = console
 
