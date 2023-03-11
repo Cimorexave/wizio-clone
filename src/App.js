@@ -61,11 +61,11 @@ const [isNewShapeDialogOpen, setIsNewShapeDialogOpen] = React.useState({
 let [isOpen, setIsOpen] = React.useState('')
   return (
     <div className="App">
-      <header>
-        <div className="tools">
+      <header className="flex basis-[5%] flex-row items-center justify-between p-1">
+        <div className="flex flex-row gap-2 items-center">
 
         {headerIcon.map(icon => <img onClick={() => {setActiveItem(icon.id)}} key={icon.id} src={icon.url} alt={'icon'} className={activeItem === icon.id ? 'active' : ''} />)}  
-        <select className="font-select" disabled >
+        <select className="w-[8rem]" disabled >
           <option>Calibri</option>
           <option>Arial</option>
           <option>Arial</option>
@@ -90,13 +90,13 @@ let [isOpen, setIsOpen] = React.useState('')
         </div>
         {/* <img src="/icons/save.svg" alt="save" /> */}
       </header>  
-      <main>
-      <canvas></canvas>
-      <aside>
-        <div className="aside-header">
-          <button className="border-black border hover:opacity-60 px-2 cursor-pointer whitespace-nowrap flex flex-row gap-0 items-center rounded-full py-1" onClick={() => setIsOpen('data')}><img src="/icons/add.svg" alt="new" />New Data</button>
-          <button className="border-black border hover:opacity-60 px-2 cursor-pointer whitespace-nowrap flex flex-row gap-0 items-center rounded-full py-1" onClick={() => setIsOpen('function')}><img src="/icons/add.svg" alt="new" />New Function</button>
-          <button className="border-black border hover:opacity-60 px-2 cursor-pointer whitespace-nowrap flex flex-row gap-0 items-center rounded-full py-1" onClick={() => setIsOpen('relation')}><img src="/icons/add.svg" alt="new" />New Relation</button>
+      <main className="flex flex-row basis-[95%]">
+      <canvas className="basis-3/4"></canvas>
+      <aside className="flex flex-col gap-2 basis-1/4">
+        <div className="flex flex-col p-2 gap-2 border-b border-black items-center flex-wrap ">
+          <button className="border-black w-full border hover:opacity-60 px-2 cursor-pointer whitespace-nowrap flex flex-row gap-0 items-center rounded-full py-1" onClick={() => setIsOpen('data')}><img src="/icons/add.svg" alt="new" />New Data</button>
+          <button className="border-black w-full border hover:opacity-60 px-2 cursor-pointer whitespace-nowrap flex flex-row gap-0 items-center rounded-full py-1" onClick={() => setIsOpen('function')}><img src="/icons/add.svg" alt="new" />New Function</button>
+          <button className="border-black w-full border hover:opacity-60 px-2 cursor-pointer whitespace-nowrap flex flex-row gap-0 items-center rounded-full py-1" onClick={() => setIsOpen('relation')}><img src="/icons/add.svg" alt="new" />New Relation</button>
           <Dialog
             open={isOpen === 'data'}
             onClose={() => setIsOpen('')}
@@ -108,10 +108,22 @@ let [isOpen, setIsOpen] = React.useState('')
             {/* Full-screen container to center the panel */}
             <div className="fixed inset-0 flex items-center justify-center p-4">
               {/* The actual dialog panel  */}
-              <Dialog.Panel className="mx-auto max-w-sm rounded bg-white">
-                <Dialog.Title>data properties</Dialog.Title>
-
-                {/* ... */}
+              <Dialog.Panel className="flex flex-col mx-auto max-w-sm rounded bg-white">
+                <header className="border-b border-black px-5 py-2 flex flex-row items-center justify-between">New Data</header>
+                <main className="grid grid-cols-1 lg:grid-cols-2 gap-5 p-5">
+                  <div className="form-el">
+                    <label for="Name" >Name</label>
+                    <input type={'text'} id="Name"/>
+                  </div>
+                  <div className="form-el">
+                    <label for="Value" >Value</label>
+                    <input type={'text'} id="Value"/>
+                  </div>
+                </main>
+                <footer className="border-black flex flex-row items-center gap-2 justify-end border-t px-5 py-3">
+                  <button className="px-5 py-1 rounded border bg-green-400 border-black grid place-items-center text-center" >Create</button>
+                  <button className="px-5 py-1 rounded border border-black grid place-items-center text-center" >Cancel</button>
+                </footer>
               </Dialog.Panel>
             </div>
           </Dialog>
@@ -126,10 +138,22 @@ let [isOpen, setIsOpen] = React.useState('')
             {/* Full-screen container to center the panel */}
             <div className="fixed inset-0 flex items-center justify-center p-4">
               {/* The actual dialog panel  */}
-              <Dialog.Panel className="mx-auto max-w-sm rounded bg-white">
-                <Dialog.Title>function properties</Dialog.Title>
-
-                {/* ... */}
+              <Dialog.Panel className="flex flex-col mx-auto max-w-sm rounded bg-white">
+                <header className="border-b border-black px-5 py-2 flex flex-row items-center justify-between">New Function</header>
+                <main className="grid grid-cols-1 lg:grid-cols-2 gap-5 p-5">
+                  <div className="form-el">
+                    <label for="Name" >Name</label>
+                    <input type={'text'} id="Name"/>
+                  </div>
+                  <div className="form-el">
+                    <label for="Value" >Value</label>
+                    <input type={'text'} id="Value"/>
+                  </div>
+                </main>
+                <footer className="border-black flex flex-row items-center gap-2 justify-end border-t px-5 py-3">
+                  <button className="px-5 py-1 rounded border bg-green-400 border-black grid place-items-center text-center" >Create</button>
+                  <button className="px-5 py-1 rounded border border-black grid place-items-center text-center" >Cancel</button>
+                </footer>
               </Dialog.Panel>
             </div>
           </Dialog>
@@ -144,14 +168,27 @@ let [isOpen, setIsOpen] = React.useState('')
             {/* Full-screen container to center the panel */}
             <div className="fixed inset-0 flex items-center justify-center p-4">
               {/* The actual dialog panel  */}
-              <Dialog.Panel className="mx-auto max-w-sm rounded bg-white">
-                <Dialog.Title>relation properties</Dialog.Title>
-
-                {/* ... */}
+              <Dialog.Panel className="flex flex-col mx-auto max-w-sm rounded bg-white">
+                <header className="border-b border-black px-5 py-2 flex flex-row items-center justify-between">New Relation</header>
+                <main className="grid grid-cols-1 lg:grid-cols-2 gap-5 p-5">
+                  <div className="form-el">
+                    <label for="Name" >Name</label>
+                    <input type={'text'} id="Name"/>
+                  </div>
+                  <div className="form-el">
+                    <label for="Value" >Value</label>
+                    <input type={'text'} id="Value"/>
+                  </div>
+                </main>
+                <footer className="border-black flex flex-row items-center gap-2 justify-end border-t px-5 py-3">
+                  <button className="px-5 py-1 rounded border bg-green-400 border-black grid place-items-center text-center" >Create</button>
+                  <button className="px-5 py-1 rounded border border-black grid place-items-center text-center" >Cancel</button>
+                </footer>
               </Dialog.Panel>
             </div>
           </Dialog>
         </div>
+        <div className="flex flex-col gap-2 p-2"></div>
       </aside>
       </main>
 

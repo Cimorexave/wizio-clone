@@ -18,20 +18,8 @@ img:hover {
     cursor: pointer;
     opacity: 0.6;
 }
-.tools {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    align-items: center;
-}
 header {
-    display: flex;
-    flex-basis: 5%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     background-color: rgb(239, 239, 239);
-    padding: 0.5rem;
     border-bottom: 1px solid gray;
 }
 input, select {
@@ -41,30 +29,8 @@ input, select {
 .font-select {
     width: 8rem;
 }
-
-main {
-    display: flex;
-    flex-direction: row;
-    flex-basis: 95%;
-}
-canvas {
-    flex-basis: 75%;
-}
 aside {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    flex-basis: 25%;
     background-color: rgb(239, 239, 239);
-}
-.aside-header {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    align-items: center;
-    flex-wrap: wrap;
-    border-bottom: 1px solid black;
-    padding: 0.5rem;
 }
 .active {
     background-color: rgb(196, 195, 195);
@@ -74,4 +40,13 @@ button:hover {
     background-color: rgb(225, 225, 225);
     opacity: 0.7;
     transition: all 200ms;
+}
+.form-el {
+    @apply flex flex-col gap-1;
+}
+label {
+    font-size: smaller;
+}
+input[type="text"] {
+    @apply bg-gray-200 w-full border rounded;
 }
